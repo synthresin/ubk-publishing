@@ -214,11 +214,12 @@
 			});
 
 			// ----
-
+			var ubk_sound_manager;
 			soundManager.onready(function() {
 			  //inlinePlayer = new InlinePlayer();
-			   var ubk_sound_manager = new UBKSoundManager();
+			   ubk_sound_manager = new UBKSoundManager();
 			   ubk_sound_manager.init();
+			   //ubk_sound_manager.on('player_event', ubk_sound_manager.handle_player);
 			});
 		</script>
 		

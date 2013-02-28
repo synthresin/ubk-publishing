@@ -3,39 +3,42 @@
 UBKPlayer = (function() {
 
   function UBKPlayer(params) {
-    this.href = params.href;
     this.view = params.view;
+    this.sound = params.sound;
   }  
 
   UBKPlayer.prototype = {
     init: function() {
+
+      var self = this;
+
       console.log('UBKPlayer init with ' + this.href);
+
+      this.view.click(function(e) {
+        e.preventDefault();
+        console.log(this)
+        if(!self.sound.playState) { // 재생중이 아니라면 얘 재생한다.
+          self.play();
+        } else {
+          self.pause();
+        }
+      })
     },
 
     play: function() {
-      // 재생되고, 다른 음악들을 멈춰야 한다.
+      this.sound.play();
     },
 
     pause: function() {
-      // 잠시 멈춘다.
-    }
+      self.sound.pause();
+    },
+
+
   };
 
   return UBKPlayer;
 
 })();
-
-// UBKProgressPlayer = (function() {
-
-//   function UBKProgressPlayer() {
-
-//   }
-
-//   return UBKProgressPlayer;
-
-// })();
-
-
 
 // 프리뷰 박스용 플레이어 && 프로그레스 바 플레이어 합친 플레이리스트 관리.
 
@@ -56,11 +59,26 @@ UBKSoundManager = (function() {
       $('.sound_wrap a').each(_.bind(function(index, elem) {
         if( this.sm.canPlayLink(elem) ) {
           //this.sm._writeDebug('mp3 파일 검색' + elem.href);
-          var player = new UBKPlayer({ view: $(elem) , href: elem.href });
+
+          // sound object 생성, id 숫자대로 먹인다.
+
+          var soundObject = this.sm.createSound({
+           id: 'UBKSound' + this.players.length, // required
+           url: elem.href, // required
+           // optional sound parameters here, see Sound Properties for full list
+           autoPlay: false,
+          });
+
+          var player = new UBKPlayer({ view: $(elem) , sound: soundObject });
           player.init();
           this.players.push(player);
         }
       }, this));
+
+      // for(var i = 0; i < this.players.length; i++) {
+      //   this.players[i].init();
+      // }
+
 
     }
   };
