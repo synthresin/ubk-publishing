@@ -67,7 +67,11 @@
 							<a href="#" class="like">200</a>
 							<div class="sns">facebook, twitter</div>
 						</div>
-						<p class="content"><img src="img/dummy_img.png">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porttitor tincidunt augue, sollicitudin sagittis est placerat sit amet. Maecenas congue iaculis nunc, ac rutrum mauris facilisis at. In sapien est, consequat eu ultricies in, sagittis eget risus. Aenean sagittis mi vitae nunc cursus vitae mattis ipsum congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla non elementum felis. In urna arcu, porta vitae pellentesque vel, fermentum sit amet leo. Vivamus vulputate magna vitae diam fringilla luctus. Ut semper tellus ac turpis molestie in sagittis mauris sollicitudin. Duis diam mi, blandit at congue quis, gravida in magna. Curabitur et fringilla tortor. Praesent fermentum hendrerit varius. Curabitur dui nisl, pellentesque id interdum a, interdum sed urna. Sed a nisl ante.</p>
+						<p class="content">
+							<div class="single_audio">
+								<a href="sound/4.mp3" class="href">으앙</a>
+							</div>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porttitor tincidunt augue, sollicitudin sagittis est placerat sit amet. Maecenas congue iaculis nunc, ac rutrum mauris facilisis at. In sapien est, consequat eu ultricies in, sagittis eget risus. Aenean sagittis mi vitae nunc cursus vitae mattis ipsum congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla non elementum felis. In urna arcu, porta vitae pellentesque vel, fermentum sit amet leo. Vivamus vulputate magna vitae diam fringilla luctus. Ut semper tellus ac turpis molestie in sagittis mauris sollicitudin. Duis diam mi, blandit at congue quis, gravida in magna. Curabitur et fringilla tortor. Praesent fermentum hendrerit varius. Curabitur dui nisl, pellentesque id interdum a, interdum sed urna. Sed a nisl ante.</p>
 						<a href="#" class="to_top">&and; Top</a>
 					</div>
 			</div>
@@ -195,12 +199,13 @@
 		</div>
 		<script type="text/javascript" src="js/vendor/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+		<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.masonry.min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.fitvids.min.js"></script>
 		<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vendor/soundmanager2-jsmin.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/inline_player2.js"></script>
+		<script type="text/javascript" src="js/inline_player3.js"></script>
 		<script type="text/javascript">
 		// 뷰가 될 부분
 			soundManager.setup({
@@ -219,7 +224,7 @@
 			  //inlinePlayer = new InlinePlayer();
 			   ubk_sound_manager = new UBKSoundManager();
 			   ubk_sound_manager.init();
-			   //ubk_sound_manager.on('player_event', ubk_sound_manager.handle_player);
+			   //ubk_sound_manager.on('player_click', ubk_sound_manager.handle_players);
 			});
 		</script>
 		

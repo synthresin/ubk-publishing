@@ -5,6 +5,8 @@ UBKPlayer = (function() {
   function UBKPlayer(params) {
     this.view = params.view;
     this.sound = params.sound;
+
+    _.extend(this, Backbone.Events);
   }  
 
   UBKPlayer.prototype = {
@@ -16,12 +18,7 @@ UBKPlayer = (function() {
 
       this.view.click(function(e) {
         e.preventDefault();
-        console.log(this)
-        if(!self.sound.playState) { // 재생중이 아니라면 얘 재생한다.
-          self.play();
-        } else {
-          self.pause();
-        }
+        
       })
     },
 
@@ -31,8 +28,7 @@ UBKPlayer = (function() {
 
     pause: function() {
       self.sound.pause();
-    },
-
+    }
 
   };
 
@@ -47,6 +43,8 @@ UBKSoundManager = (function() {
   function UBKSoundManager() {
     this.sm = soundManager;
     this.players = [];
+
+    _.extend(this, Backbone.Events);
   }
 
   UBKSoundManager.prototype = {
@@ -74,12 +72,9 @@ UBKSoundManager = (function() {
           this.players.push(player);
         }
       }, this));
-
-      // for(var i = 0; i < this.players.length; i++) {
-      //   this.players[i].init();
-      // }
-
-
+    },
+    handle_players : function() {
+      alert('으앙');
     }
   };
 
