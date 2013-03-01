@@ -339,6 +339,9 @@ body {
 							position: absolute;left:0; top:0;display: block; width:100%;height:100%; overflow: hidden;
 							img {position:relative; width:200%; max-width: none;}
 						}
+
+						> a.sm2_playing img {left:-100%;}
+
 					}
 					.single_audio_right {
 						position: absolute; left:25%;
@@ -360,8 +363,6 @@ body {
 							position:absolute; bottom:0; left:0; width:100%; height:9px; background: #313131;
 							.ui-slider-range {width:0%; height:9px; background: white;}
 						}
-
-						> .progress_bar.ui-slider-disabled {display: none;}
 						
 					}
 

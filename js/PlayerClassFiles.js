@@ -182,6 +182,13 @@ UBKSoundManager = (function() {
       });
 
       // 프로그래시브 바 음악 플레이어들을 init 
+      $('.single_audio_left a.sound').each(function(index, elem) {
+        if( self.sm.canPlayLink(elem) ) {
+          var player = new UBKPlayer({view:$(elem), href:elem.href, progress_bar:$(elem).parent().parent().find('.progress_bar'), manager:self});
+          player.init();
+          self.players.push(player);
+        }
+      });
     },
 
     stopPlayer: function(player) {
