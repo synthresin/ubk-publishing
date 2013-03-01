@@ -10,6 +10,9 @@ UBKPlayer = (function() {
     this.manager = params.manager;
     this.sm = soundManager;
     this.progress_bar = params.progress_bar;
+    this.time = params.time;
+    this.current_time;
+    this.duration_time;
 
   }  
 
@@ -26,6 +29,7 @@ UBKPlayer = (function() {
        onplay: function() {
         self.add_playing(self);
         self.enable_slider(self);
+        if(self.time) self.enable_time(self);
        },
        onresume: function() {
         self.add_playing(self);
@@ -37,6 +41,7 @@ UBKPlayer = (function() {
         self.remove_playing(self);
         self.reset_progress(self);
         self.disable_slider(self);
+        if(self.time) self.reset_time(self);
        },
        onstop: function() {
         self.remove_playing(self);
@@ -56,9 +61,12 @@ UBKPlayer = (function() {
       this.progress_bar.slider({
         range: "min", 
         disabled: true, 
+        //드래그 시작
         start: function(ev, ui) {
           self.sound.pause();
         }, 
+
+        // 드래그 종료
         stop: function(ev, ui) {
 
           var duration; 
@@ -73,19 +81,18 @@ UBKPlayer = (function() {
           
           var position = duration * percent / 100;
 
-          console.log(position);
+          //console.log(position);
 
           self.sound.setPosition(position);
           self.sound.resume();
 
-
-
-          // ui 값 받아서
-          // 총 듀레이션에 퍼센트로 곱한다음
-          // 포지션으로 지정하고
-          // 재생
         }
       });
+
+      if(this.time) {
+        this.current_time = this.time.find('.current_time');
+        this.duration_time = this.time.find('.duration_time');
+      }
 
     },
 
@@ -94,6 +101,7 @@ UBKPlayer = (function() {
       this.view.removeClass('sm2_playing');
       this.progress_bar.slider('value', 0);
       this.progress_bar.slider('disable');
+      if(this.time) this.current_time.html('0:00');
       this.sm.stop(this.sound.id);
       this.sm.unload(this.sound.id);
     },
@@ -139,6 +147,11 @@ UBKPlayer = (function() {
 
       self.progress_bar.slider('value', percent);
 
+      if(this.time) {
+        this.current_time.html(this.format_time(progressValue));
+        this.duration_time.html(this.format_time(duration));
+      }
+
     },
 
     reset_progress: function(self) {
@@ -149,6 +162,22 @@ UBKPlayer = (function() {
     },
     disable_slider:function(self) {
       self.progress_bar.slider("disable");
+    },
+
+    enable_time:function(self) {
+      self.time.show();
+    },
+
+    format_time: function(milsec) {
+      var time = parseInt(milsec / 1000, 10);
+      var minutes = Math.floor(time / 60);
+      var seconds = time - minutes * 60;
+      if(seconds < 10) seconds = "0" + seconds;
+      return minutes + ":" + seconds;
+    },
+
+    reset_time:function(self) {
+      self.current_time.html('0:00');
     }
 
   };
@@ -184,7 +213,7 @@ UBKSoundManager = (function() {
       // 프로그래시브 바 음악 플레이어들을 init 
       $('.single_audio_left a.sound').each(function(index, elem) {
         if( self.sm.canPlayLink(elem) ) {
-          var player = new UBKPlayer({view:$(elem), href:elem.href, progress_bar:$(elem).parent().parent().find('.progress_bar'), manager:self});
+          var player = new UBKPlayer({view:$(elem), href:elem.href, progress_bar:$(elem).parent().parent().find('.progress_bar'), manager:self, time:$(elem).parent().parent().find('.time')});
           player.init();
           self.players.push(player);
         }
