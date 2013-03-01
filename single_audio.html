@@ -67,10 +67,19 @@
 							<a href="#" class="like">200</a>
 							<div class="sns">facebook, twitter</div>
 						</div>
-						<p class="content">
-							<div class="single_audio">
-								<a href="sound/4.mp3" class="href">으앙</a>
+						<div class="single_audio clearfix">
+							<div class="single_audio_left">
+								<img src="img/dummy_sound_img2.png">
+								<a href="sound/2.mp3" class="sound"><img src="img/btn_sound_toggle.png"></a>
 							</div>
+							<div class="single_audio_right">
+								<h5>독</h5>
+								<p class="author">by <a href="#">Primary</a></p>
+								<p class="time"> <span class="position">0</span> / <span class="duration">0</span></p>
+								<div class="progress_bar"></div>
+							</div>
+						</div>
+						<p class="content">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porttitor tincidunt augue, sollicitudin sagittis est placerat sit amet. Maecenas congue iaculis nunc, ac rutrum mauris facilisis at. In sapien est, consequat eu ultricies in, sagittis eget risus. Aenean sagittis mi vitae nunc cursus vitae mattis ipsum congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla non elementum felis. In urna arcu, porta vitae pellentesque vel, fermentum sit amet leo. Vivamus vulputate magna vitae diam fringilla luctus. Ut semper tellus ac turpis molestie in sagittis mauris sollicitudin. Duis diam mi, blandit at congue quis, gravida in magna. Curabitur et fringilla tortor. Praesent fermentum hendrerit varius. Curabitur dui nisl, pellentesque id interdum a, interdum sed urna. Sed a nisl ante.</p>
 						<a href="#" class="to_top">&and; Top</a>
 					</div>
@@ -148,10 +157,8 @@
 					<div class="box preview">
 						<div class="sound_wrap">
 							<img src="img/dummy_sound_img.png">
-							<a href="sound/5.mp3"><img src="img/btn_sound_toggle.png"></a>
-							<div class="progress_bar">
-								<div class="progress_"></div>
-							</div>
+							<a href="sound/5.mp3" class="sound"><img src="img/btn_sound_toggle.png"></a>
+							<div class="progress_bar"></div>
 						</div>
 						<div class="desc">
 							<h3><a href="#">MFBTY - SWEET DREAM SOUND</a></h3>
@@ -164,10 +171,8 @@
 					<div class="box preview">
 						<div class="sound_wrap">
 							<img src="img/dummy_sound_img2.png">
-							<a href="sound/2.mp3"><img src="img/btn_sound_toggle.png"></a>
-							<div class="progress_bar">
-								<div class="progress_"></div>
-							</div>
+							<a href="sound/2.mp3" class="sound"><img src="img/btn_sound_toggle.png"></a>
+							<div class="progress_bar"></div>
 						</div>
 						<div class="desc">
 							<h3><a href="#">MFBTY - SWEET DREAM SOUND2</a></h3>
@@ -180,10 +185,8 @@
 					<div class="box preview">
 						<div class="sound_wrap">
 							<img src="img/dummy_sound_img3.png">
-							<a href="sound/3.mp3"><img src="img/btn_sound_toggle.png"></a>
-							<div class="progress_bar">
-								<div class="progress_"></div>
-							</div>
+							<a href="sound/3.mp3" class="sound"><img src="img/btn_sound_toggle.png"></a>
+							<div class="progress_bar"></div>
 						</div>
 						<div class="desc">
 							<h3><a href="#">MFBTY - SWEET DREAM SOUND3</a></h3>
@@ -207,6 +210,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="js/vendor/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery-ui-1.10.1.custom.min.js"></script>
 		<script type="text/javascript" src="js/vendor/underscore-min.js"></script>
 		<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery.masonry.min.js"></script>
@@ -214,27 +218,22 @@
 		<script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/vendor/soundmanager2-jsmin.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-		<script type="text/javascript" src="js/inline_player4.js"></script>
+		<script type="text/javascript" src="js/PlayerClassFiles.js"></script>
 		<script type="text/javascript">
-		// 뷰가 될 부분
+			/* 뷰가 시작될 부분 */
 			soundManager.setup({
-			  // disable or enable debug output
 			  debugMode: true,
-			  // use HTML5 audio for MP3/MP4, if available
 			  preferFlash: false,
 			  useFlashBlock: true,
-			  // path to directory containing SM2 SWF
 			  url: '../swf/'
 			});
 
-			// ----
 			var ubk_sound_manager;
 			soundManager.onready(function() {
-			  //inlinePlayer = new InlinePlayer();
 			   ubk_sound_manager = new UBKSoundManager();
 			   ubk_sound_manager.init();
-			   //ubk_sound_manager.on('player_click', ubk_sound_manager.handle_players);
 			});
+			/* 뷰가 끝날 부분 */
 		</script>
 		
 	</body>

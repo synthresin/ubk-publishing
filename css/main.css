@@ -199,10 +199,12 @@ body {
       width: 100%;
       height: 9px;
       background: #313131; }
-      #modules .module .box.preview .sound_wrap > .progress_bar .progress_ {
+      #modules .module .box.preview .sound_wrap > .progress_bar .ui-slider-range {
         width: 0%;
         height: 9px;
         background: white; }
+    #modules .module .box.preview .sound_wrap > .progress_bar.ui-slider-disabled {
+      display: none; }
   #modules .module .box.preview .img_wrap a, #modules .module .box.preview .img_wrap img {
     display: block;
     width: 100%; }
@@ -315,6 +317,69 @@ body {
         margin-bottom: 10px; }
       #modules .module .box.single p.content .fluid-width-video-wrapper {
         margin-bottom: 10px; }
+    #modules .module .box.single .single_audio {
+      width: 100%;
+      position: relative;
+      margin-bottom: 12px;
+      background: #262626; }
+      #modules .module .box.single .single_audio .single_audio_left {
+        width: 25%;
+        height: 100%;
+        float: left;
+        position: relative; }
+        #modules .module .box.single .single_audio .single_audio_left > img {
+          width: 100%; }
+        #modules .module .box.single .single_audio .single_audio_left > a {
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          overflow: hidden; }
+          #modules .module .box.single .single_audio .single_audio_left > a img {
+            position: relative;
+            width: 200%;
+            max-width: none; }
+      #modules .module .box.single .single_audio .single_audio_right {
+        position: absolute;
+        left: 25%;
+        width: 75%;
+        height: 100%;
+        float: right; }
+        #modules .module .box.single .single_audio .single_audio_right h5 {
+          margin: 0;
+          line-height: 100%;
+          font-size: 16px;
+          padding-top: 13px;
+          padding-left: 13px; }
+        #modules .module .box.single .single_audio .single_audio_right .author {
+          padding-top: 3px;
+          padding-left: 13px;
+          color: #b5b5b5;
+          font-size: 12px; }
+          #modules .module .box.single .single_audio .single_audio_right .author a {
+            color: #b5b5b5; }
+        #modules .module .box.single .single_audio .single_audio_right .time {
+          color: #b5b5b5;
+          font-size: 12px;
+          position: absolute;
+          left: 13px;
+          bottom: 15px;
+          margin: 0; }
+        #modules .module .box.single .single_audio .single_audio_right > .progress_bar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 9px;
+          background: #313131; }
+          #modules .module .box.single .single_audio .single_audio_right > .progress_bar .ui-slider-range {
+            width: 0%;
+            height: 9px;
+            background: white; }
+        #modules .module .box.single .single_audio .single_audio_right > .progress_bar.ui-slider-disabled {
+          display: none; }
     #modules .module .box.single a.to_top {
       color: white;
       display: block;
@@ -463,6 +528,11 @@ body {
         margin-bottom: 10px; }
       #modules .module .box.single p.content .fluid-width-video-wrapper {
         margin-bottom: 10px; }
+    #modules .module .box.single .single_audio .single_audio_right .time {
+      left: auto;
+      right: 13px;
+      bottom: auto;
+      top: 11px; }
 
   #modules .module .box.profile .pic_wrap {
     margin-left: 0; }
