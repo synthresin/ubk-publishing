@@ -1,11 +1,35 @@
 $(document).ready(function () {
 
     // 비디오 맞춰주는 스크립트
-	$(".vid_wrap").fitVids();
 
-    // 비디오 맞춰주는 스크립트.(매거진 세부의 경우)
-    $(".box.magazine .content").fitVids();
-    $(".box.single .content").fitVids();
+    function resizeVids() {
+
+        var selector_string = "iframe[src*='player.vimeo.com'],iframe[src*='www.youtube.com'], iframe[src*='www.youtube-nocookie.com'], iframe[src*='www.kickstarter.com'], object, embed"
+
+        $(selector_string).each(function(idx, elem){
+
+          var $elem = $(elem);
+          var width = $elem.width();
+          var height = $elem.height();
+          var ratio = width/height;
+
+          var $parent = $elem.parent();
+          var parentWidth = $parent.width();
+
+          $elem.width(parentWidth);
+          var newHeight = parentWidth / ratio;
+
+          if(newHeight < 200) {
+            $elem.height(200);
+          } else {
+            $elem.height(parentWidth / ratio );
+          }
+        });  
+    }
+
+    resizeVids();
+
+    $(window).resize(resizeVids);
    
     // masonry 스크립트
     $("#modules").masonry({
